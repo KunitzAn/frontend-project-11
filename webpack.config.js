@@ -11,17 +11,21 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
   },
   devServer: {
     open: true,
     host: 'localhost',
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'main.css',
+      filename: './src/styles.sccs',
     }),
     new NodePolyfillPlugin(),
     // Add your plugins here
@@ -53,22 +57,8 @@ const config = {
         use: 'file-loader',
       },
     ],
-
-    /*
-    rules: [
-      {
-        test: /\.(js|jsx)$/i,
-        loader: 'babel-loader',
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: 'asset',
-      },
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
-    ],
-    */
+    // Add your rules for custom modules here
+    // Learn more about loaders from https://webpack.js.org/loaders/
   },
 };
 
