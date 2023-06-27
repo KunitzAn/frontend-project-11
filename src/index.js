@@ -1,2 +1,5 @@
 import './styles.scss';
-import 'bootstrap';
+import 'bootstrap/js/src/modal';
+import app from './main';
+
+app().catch(console.error);
